@@ -9,8 +9,7 @@ mkdir data
 mkdir log
 cp ../repos/claw/claw/config.yaml.example configs/claw.conf.yaml
 cp ../repos/auditor/auditor/auditor.example.conf.yaml configs/auditor.conf.yaml
-cp ../repos/auditor/auditor/example* configs/
-cp ../repos/auditor/auditor/empty.yaml configs/empty.yaml
+cp ../repos/auditor/auditor/configs/* configs/
 cp ../repos/optimus/optimus/optimus.example.conf.yaml configs/optimus.conf.yaml
 cp ../repos/lineman/lineman/lineman.example.conf.yaml configs/lineman.conf.yaml
 cp ../repos/pigeon/pigeon/pigeon.example.conf.yaml configs/pigeon.conf.yaml
