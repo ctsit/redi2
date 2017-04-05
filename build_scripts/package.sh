@@ -1,4 +1,5 @@
 echo "Preparing your package!"
+cd ..
 bash setup_directories.sh
 
 echo "Getting source files"

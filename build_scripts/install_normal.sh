@@ -13,6 +13,4 @@ popd # leaving redi2
 
 bash build_scripts/new_site.sh
 
-echo "All set up."
-echo "Now edit your configs and the run script in the redi2/NEW_SITE."
-
+echo "Check in redi2/redi2/NEW_SITE for an example"
