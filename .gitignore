@@ -88,3 +88,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# project specific stuff
+# here be dragons / P.H.I.
+redi2/*/configs
+redi2/*/data
+redi2/*/log
