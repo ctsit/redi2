@@ -64,4 +64,45 @@ Run `bash install_two_remote.sh`
 
 Edit the `NEW_SITE` directory in the `redi2` directory to have the right name and configs.
 
+Run `source correct_path.env` to correct the python path. This needs to be done everytime you run the tools in the 
+venv or not.
+
 Set the `run.sh` script to run when you want it to.
+
+
+## Meet the parts of redi2 ##
+
+redi2 is really just a collection of tools and a few scripts which help you get set up. 
+
+### Claw ###
+
+Claw grabs files over sftp
+
+### Auditor ###
+
+Auditor redacts, maps, cleans and basically does whatever to the output of claw which should be a CSV.
+
+### Optimus ###
+
+Optimus takes your particular CSV and your project specific rules and transforms the data into a form which should
+be easy to make right with redcap. Here is when branching logic should be applied and any derived data which 
+can be inferred, but is not explicitly present in your raw CSV should be made.
+
+
+### Lineman ###
+ 
+Lineman is the first tool to talk to redcap. It grabs information related to the data you are passing in and 
+validates that it can be imported. It will change the fields that it must in order to make sure that it will go in.
+For example, it can take dates and map them to the correct event in the redcap.
+
+### Pigeon ###
+
+Pigeon carries the data to redcap. This is the last step and the only one where data will change on the
+redcap server. This tool takes a greedy approach, so it will attempt to push in all that it can at once.
+It can recover from errors and will keep trying to push the data in till it gives up and pushes in one record
+at a time.
+
+## Putting it all together ##
+
+Once one has built their configs all that remains is to run the tools in the right order. Pretty easy! 
+Happy redcapping!

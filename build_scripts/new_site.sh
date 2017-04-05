@@ -15,7 +15,7 @@ cp ../repos/lineman/lineman/lineman.example.conf.yaml configs/lineman.conf.yaml
 cp ../repos/pigeon/pigeon/pigeon.example.conf.yaml configs/pigeon.conf.yaml
 
 echo "Building a simple run script"
-cat ../../run_template.sh > run.sh
+cat ../../build_scripts/run_template.sh > run.sh
 chmod +x run.sh
 
 popd # leaving NEW_SITE

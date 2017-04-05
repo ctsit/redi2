@@ -1,15 +1,17 @@
 echo "Deploying RED-I 2!"
-bash setup_directories.sh
+cd ..
+bash build_scripts/setup_directories.sh
 
 echo "Getting source files"
+pushd redi2
 pushd repos
-bash ../../get_source.sh
-bash ../../install_packages.sh
+bash ../../build_scripts/get_source.sh
+bash ../../build_scripts/install_packages.sh
 
 popd # leaving repos
 popd # leaving redi2
 
-bash new_site.sh
+bash build_scripts/new_site.sh
 
 echo "All set up."
 echo "Now edit your configs and the run script in the redi2/NEW_SITE."

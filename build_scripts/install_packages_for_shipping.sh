@@ -1,3 +1,4 @@
+source ../venv/bin/activate
 pip3 install ./cappy --target ../packages
 pip3 install ./claw --target ../packages
 pip3 install ./auditor --target ../packages

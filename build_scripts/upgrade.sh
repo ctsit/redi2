@@ -1,4 +1,5 @@
 echo "Using git to update the repos!"
+cd ..
 pushd redi2
 
 echo "Git pulling on all repos"
