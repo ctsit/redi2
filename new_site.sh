@@ -18,7 +18,6 @@ echo "Building a simple run script"
 cat ../../run_template.sh > run.sh
 chmod +x run.sh
 
-
 popd # leaving NEW_SITE
 popd # leaving redi2
 
