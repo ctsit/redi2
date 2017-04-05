@@ -1,6 +1,6 @@
 echo "Preparing your package!"
 cd ..
-bash setup_directories.sh
+bash build_scripts/setup_directories.sh
 
 echo "Getting source files"
 pushd redi2
