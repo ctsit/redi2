@@ -1,6 +1,7 @@
 echo "Making new site with folder named NEW_SITE in the redi2 folder"
 
 echo "Bringing over sample configs into example site"
+cd ..
 pushd redi2
 mkdir NEW_SITE
 pushd NEW_SITE
