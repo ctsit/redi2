@@ -23,6 +23,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
+packages/
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
@@ -87,3 +88,9 @@ ENV/
 
 # Rope project settings
 .ropeproject
+
+# project specific stuff
+# here be dragons / P.H.I.
+redi2/*/configs
+redi2/*/data
+redi2/*/log
