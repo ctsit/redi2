@@ -11,7 +11,7 @@ python3 -m venv ./venv
 source venv/bin/activate
 
 pushd repos
-bash ../../build_scripts/install_packages.sh
+bash ../../build_scripts/install_local_packages.sh
 popd # leaving repos
 popd # leaving redi2
 
