@@ -3,7 +3,7 @@ cd ..
 pushd redi2
 pushd packages
 printf "export PYTHONPATH=$PYTHONPATH:%s \n" $(pwd) > ../correct_path.env
-source correct_path.env
+source ../correct_path.env
 popd
 
 echo "Creating a virtualenv to hold everything"
