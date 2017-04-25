@@ -1,3 +1,6 @@
+# NOTE unlike the other build scripts, this one needs to be run
+# one level up.
+# $ bash build_scripts/new_site.sh
 echo "Making new site with folder named NEW_SITE in the redi2 folder"
 
 echo "Bringing over sample configs into example site"
@@ -10,7 +13,7 @@ mkdir log
 cp ../repos/claw/claw/config.yaml.example configs/claw.conf.yaml
 cp ../repos/auditor/auditor/auditor.example.conf.yaml configs/auditor.conf.yaml
 cp ../repos/auditor/auditor/configs/* configs/
-cp ../repos/optimus/optimus/optimus.example.conf.yaml configs/optimus.conf.yaml
+cp ../repos/optimus/optimus/configs/* configs/
 cp ../repos/lineman/lineman/lineman.example.conf.yaml configs/lineman.conf.yaml
 cp ../repos/pigeon/pigeon/pigeon.example.conf.yaml configs/pigeon.conf.yaml
 
