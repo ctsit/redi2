@@ -94,3 +94,6 @@ ENV/
 redi2/*/configs
 redi2/*/data
 redi2/*/log
+
+#lazy senrabc stuff
+tmp/*
