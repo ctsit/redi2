@@ -1,0 +1,3 @@
+a1_1_subject_id,redcap_event_name,redcap_data_access_group,a1_form_demographics_complete,a2_1_med_order_date,a2_2_med_order_start_date,a2_3_order_end_date,a2_4_order_display_name,a2_5_order_discrete_dose,a2_6_order_discrete_dose_unit,a2_8_rxnorm_code,a2_form_conmeds_complete
+001,event_001_arm_1,,0,,,,,,,,0
+002,event_001_arm_1,group_a,2,2015-03-27,2015-03-27,2015-04-26,"Order Display Name",1,,,0

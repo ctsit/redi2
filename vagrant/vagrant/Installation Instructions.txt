@@ -1,0 +1,18 @@
+
+ == INSTRUCTIONS FOR INSTALLING REDCAP ==
+
+NOTE: These instructions assume that you already have a MySQL database server and a web server with PHP 
+up and running. You will need to use a MySQL client (we recommend phpMyAdmin) to interface with the 
+MySQL server. If one or more of these components are not installed, visit the following address for more 
+information about obtaining and installing them: https://iwg.devguard.com/trac/redcap/wiki/3rdPartySoftware
+
+1.) In the installation package ZIP file, unzip its contents and copy the "redcap" folder from the 
+ZIP file onto your web server at the file location that you wish to serve it from over the web.
+
+2.) Now that the "redcap" folder is on your web server, try to access its Install Module from a web 
+browser by pointing your browser to the "install.php" page inside the "redcap" folder 
+(e.g. https://www.mc.vanderbilt.edu/apps/redcap/install.php). Once you load the REDCap installation 
+module in your web browser, it will provide you with the rest of the instructions you will need for 
+completing the installation of REDCap.
+	
+ENJOY!

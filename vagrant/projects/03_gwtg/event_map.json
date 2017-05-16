@@ -1,0 +1,9 @@
+[{
+    "arm_num": 1,
+    "unique_event_name": "event_1_arm_1",
+    "form": "gwtg_database_patient_log"
+}, {
+    "arm_num": 1,
+    "unique_event_name": "event_1_arm_1",
+    "form": "data_uploads"
+}]

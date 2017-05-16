@@ -1,0 +1,242 @@
+[
+    {
+        "instrument_label": "Demographics", 
+        "instrument_name": "demographics"
+    }, 
+    {
+        "instrument_label": "Informed Consent", 
+        "instrument_name": "informed_consent"
+    }, 
+    {
+        "instrument_label": "Inclusion / Exclusion", 
+        "instrument_name": "inclusion_exclusion"
+    }, 
+    {
+        "instrument_label": "Key Medical History", 
+        "instrument_name": "key_medical_history"
+    }, 
+    {
+        "instrument_label": "MH Coding", 
+        "instrument_name": "mh_coding"
+    }, 
+    {
+        "instrument_label": "Substance Use", 
+        "instrument_name": "substance_use"
+    }, 
+    {
+        "instrument_label": "Prior Treatment Response", 
+        "instrument_name": "prior_treatment_response"
+    }, 
+    {
+        "instrument_label": "IL28B / HCV Genotypes", 
+        "instrument_name": "il28b_hcv_genotypes"
+    }, 
+    {
+        "instrument_label": "Fibrosis Staging", 
+        "instrument_name": "fibrosis_staging"
+    }, 
+    {
+        "instrument_label": "CBC", 
+        "instrument_name": "cbc"
+    }, 
+    {
+        "instrument_label": "CBC Standard", 
+        "instrument_name": "cbc_standard"
+    }, 
+    {
+        "instrument_label": "Chemistry", 
+        "instrument_name": "chemistry"
+    }, 
+    {
+        "instrument_label": "Chemistry Standard", 
+        "instrument_name": "chemistry_standard"
+    }, 
+    {
+        "instrument_label": "INR", 
+        "instrument_name": "inr"
+    }, 
+    {
+        "instrument_label": "HCV RNA Results", 
+        "instrument_name": "hcv_rna_results"
+    }, 
+    {
+        "instrument_label": "HCV RNA Standard", 
+        "instrument_name": "hcv_rna_standard"
+    }, 
+    {
+        "instrument_label": "Treatment Regimen", 
+        "instrument_name": "treatment_regimen"
+    }, 
+    {
+        "instrument_label": "Interferon Administration", 
+        "instrument_name": "interferon_administration"
+    }, 
+    {
+        "instrument_label": "Ribavirin Administration", 
+        "instrument_name": "ribavirin_administration"
+    }, 
+    {
+        "instrument_label": "Boceprevir Administration", 
+        "instrument_name": "boceprevir_administration"
+    }, 
+    {
+        "instrument_label": "Telaprevir Administration", 
+        "instrument_name": "telaprevir_administration"
+    }, 
+    {
+        "instrument_label": "Simeprevir Administration", 
+        "instrument_name": "simeprevir_administration"
+    }, 
+    {
+        "instrument_label": "Sofosbuvir Administration", 
+        "instrument_name": "sofosbuvir_administration"
+    }, 
+    {
+        "instrument_label": "Daclatasvir Administration", 
+        "instrument_name": "daclatasvir_administration"
+    }, 
+    {
+        "instrument_label": "Harvoni Administration", 
+        "instrument_name": "harvoni_administration"
+    }, 
+    {
+        "instrument_label": "Parit / Ombit (Viekira part 1)", 
+        "instrument_name": "ombitasvir_paritaprevir"
+    }, 
+    {
+        "instrument_label": "Dasab (Viekira part 2)", 
+        "instrument_name": "dasabuvir"
+    }, 
+    {
+        "instrument_label": "Zepatier Administration", 
+        "instrument_name": "zepatier_administration"
+    }, 
+    {
+        "instrument_label": "EX Coding", 
+        "instrument_name": "ex_coding"
+    }, 
+    {
+        "instrument_label": "Adverse Events", 
+        "instrument_name": "adverse_events"
+    }, 
+    {
+        "instrument_label": "AE Coding", 
+        "instrument_name": "ae_coding"
+    }, 
+    {
+        "instrument_label": "ConMeds", 
+        "instrument_name": "conmeds"
+    }, 
+    {
+        "instrument_label": "CM Coding", 
+        "instrument_name": "cm_coding"
+    }, 
+    {
+        "instrument_label": "Immunosuppression Dosages", 
+        "instrument_name": "immunosuppression_dosages"
+    }, 
+    {
+        "instrument_label": "PPI Dosages", 
+        "instrument_name": "ppi_dosages"
+    }, 
+    {
+        "instrument_label": "Transfusions", 
+        "instrument_name": "transfusions"
+    }, 
+    {
+        "instrument_label": "On/Post TX Liver Transplant", 
+        "instrument_name": "onpost_tx_liver_transplant"
+    }, 
+    {
+        "instrument_label": "Early Discontinuation / EOT", 
+        "instrument_name": "early_discontinuation_eot"
+    }, 
+    {
+        "instrument_label": "PI Signature", 
+        "instrument_name": "pi_signature"
+    }, 
+    {
+        "instrument_label": "Source Upload Form", 
+        "instrument_name": "source_upload_form"
+    }, 
+    {
+        "instrument_label": "Site Source Upload Form", 
+        "instrument_name": "site_source_upload_form"
+    }, 
+    {
+        "instrument_label": "Data Entry Completion", 
+        "instrument_name": "data_entry_completion"
+    }, 
+    {
+        "instrument_label": "Resource", 
+        "instrument_name": "resource"
+    }, 
+    {
+        "instrument_label": "Protocol Deviations", 
+        "instrument_name": "protocol_deviations"
+    }, 
+    {
+        "instrument_label": "Derived Values Baseline", 
+        "instrument_name": "derived_values_baseline"
+    }, 
+    {
+        "instrument_label": "Derived Values", 
+        "instrument_name": "derived_values"
+    }, 
+    {
+        "instrument_label": "Cirrhosis", 
+        "instrument_name": "cirrhosis"
+    }, 
+    {
+        "instrument_label": "CBC Imported", 
+        "instrument_name": "cbc_imported"
+    }, 
+    {
+        "instrument_label": "CBC Im Standard", 
+        "instrument_name": "cbc_im_standard"
+    }, 
+    {
+        "instrument_label": "Chemistry Imported", 
+        "instrument_name": "chemistry_imported"
+    }, 
+    {
+        "instrument_label": "Chemistry Im Standard", 
+        "instrument_name": "chemistry_im_standard"
+    }, 
+    {
+        "instrument_label": "INR Imported", 
+        "instrument_name": "inr_imported"
+    }, 
+    {
+        "instrument_label": "HCV RNA Imported", 
+        "instrument_name": "hcv_rna_imported"
+    }, 
+    {
+        "instrument_label": "HCV RNA Im Standard", 
+        "instrument_name": "hcv_rna_im_standard"
+    }, 
+    {
+        "instrument_label": "Conmeds Imported", 
+        "instrument_name": "conmeds_imported"
+    }, 
+    {
+        "instrument_label": "Cm Im Coding", 
+        "instrument_name": "cm_im_coding"
+    }, 
+    {
+        "instrument_label": "Biospecimens", 
+        "instrument_name": "biological_specimens"
+    }, 
+    {
+        "instrument_label": "Comments", 
+        "instrument_name": "comments"
+    }, 
+    {
+        "instrument_label": "Cryoglobulinemia Baseline", 
+        "instrument_name": "cryoglobulinemia_baseline"
+    }, 
+    {
+        "instrument_label": "Cryoglobulinemia Followup", 
+        "instrument_name": "cryoglobulinemia_followup"
+    }
+]
