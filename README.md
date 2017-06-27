@@ -71,7 +71,7 @@ Set the `run.sh` script to run when you want it to.
 
 
 ## Meet the parts of redi2 ##
-![data_flow](https://github.com/PFWhite/redi2/blob/master/redi2%20tools%20and%20data%20flow.svg)
+![data_flow](https://raw.githubusercontent.com/PFWhite/redi2/master/redi2%20tools%20and%20data%20flow.svg)
 
 redi2 is really just a collection of tools and a few scripts which help you get set up. 
 
