@@ -1,0 +1,48 @@
+alias db='mysql --prompt="(\u@\h) [\d]> " --pager="less -niSFX" -uredcap -ppassword redcap'
+alias check_app="curl -s http://localhost/redcap/ | grep -i  'Welcome\|Critical Error' "
+alias restart_httpd='sudo /etc/init.d/apache2 reload '
+alias restart_mysql='sudo service mysql restart'
+
+alias remove_ban='echo "Qury run: DELETE FROM redcap_ip_banned;" && mysql -uredcap -ppassword redcap -e "DELETE FROM redcap_ip_banned;" '
+alias show_columns='mysql -uredcap -ppassword redcap -e "SELECT TABLE_SCHEMA, TABLE_NAME, COLUMN_NAME, DATA_TYPE FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = \"redcap\" " '
+alias show_logs='mysql -uredcap -ppassword redcap -e "SELECT log_event_id, ip, object_type, event_id, data_values, description, sql_log FROM redcap_log_event ORDER BY log_event_id DESC LIMIT 10" '
+
+alias cd_app='cd /var/www/redcap && ls -al'
+alias cd_api='cd /var/www/redcap/redcap_v6.0.5/API && ls -al'
+
+alias ls='ls --color=auto'
+alias lsa='ls -al'
+alias lss='ls -ltr'
+alias dua='du -hcs'
+alias cdd='cd ..'
+
+alias gst='git status'
+alias glog='git log'
+alias gdiff='git diff'
+alias gdif='git diff --cached'
+alias gb='git branch'
+alias gp='git remote -v'
+alias gf='git show --name-status'
+alias gan='git blame'
+
+alias grepa="nice ack-grep -i"
+
+function venv() {
+   CMD="X$1"
+
+   if [ "$CMD" = "Xup" ]; then
+      . venv/bin/activate
+   elif [ "$CMD" = "Xdown" ]; then
+      deactivate
+   elif [ "$CMD" = "Xrestart" ]; then
+      rm -rf venv
+      virtualenv venv
+      . venv/bin/activate
+      which redi
+   elif [ "$CMD" = "Xdestroy" ]; then
+      deactivate
+      rm -rf venv
+   else
+      echo "Supported commands: venv [up | down | restart | destroy]"
+   fi
+}
