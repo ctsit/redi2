@@ -1,0 +1,4 @@
+cappy_version: pidgeon.json
+token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+redcap_url: http://redi2.dev/redcap/api/
+batch_size: 0 # if redcap has problems increase this number
