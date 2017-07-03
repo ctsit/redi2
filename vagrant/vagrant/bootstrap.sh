@@ -111,3 +111,6 @@ deploy_projects
 
 install_redi2
 # install_gsm
+
+
+echo "DONE Now check the project README to see how to continue the testing process."

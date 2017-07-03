@@ -12,7 +12,7 @@ echo "Copying synthetic data to NEW_SITE"
 cp synth.csv ../redi2/NEW_SITE/data/synth.csv
 
 echo "Loading pigeon data into the redcap"
-pigeon pigeon_init.json pigeon.conf.yaml
+pigeon pigeon_init.json synth.pigeon.conf.yaml
 
 echo "Done"
 echo "If the pigeon run errored, make sure that you put the corrent token into \

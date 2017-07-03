@@ -103,6 +103,30 @@ redcap server. This tool takes a greedy approach, so it will attempt to push in 
 It can recover from errors and will keep trying to push the data in till it gives up and pushes in one record
 at a time.
 
+## Vagrant testing ##
+
+RED-I2 can be tested on a vagrant. In order to do so the following steps need to be completed in order.
+
+- clone the repo
+- go into the vagrant/vagrant director and run vagrant up. (Make sure to install the plugins in the plugins.txt file)
+- open your browser to http://redi2.dev/redcap/ and go to the api, take note of your token
+- run vagrant ssh from the vagrant/vagrant directory and go to ~/redi2/synthetic_data
+- edit the synth.pigeon.conf.yaml and insert the token from before
+- run `bash prep_synthetic_data.sh` if it fails then your install went wrong or more likely you dont have the right token
+
+Now if you check your redcap you should see that there are four subjects entered. These are used in the full synthetic
+data run that we are about to do. Go back the terminal which is logged into the vagrant and do the following:
+
+- cd ~
+- cd redi2/synthetic/data
+- In the synth.optimus.conf.yaml, synth.lineman.conf.yaml change the token to the one in the synth.pigeon.conf.yaml
+- run `cp synth.*.yaml ~/redi2/redi2/NEW_SITE/configs/`
+- run `cp synth.run.sh ~/redi2/redi2/NEW_SITE/`
+- run `bash synth_run_prepare.sh`
+- cd ~/redi2/redi2/NEW_SITE
+- run `bash synth.run.sh`
+- go look at your redcap and see the data that has been added. Additionally check the NEW_SITE/data folder for the files generated during the run
+
 ## Putting it all together ##
 
 Once one has built their configs all that remains is to run the tools in the right order. Pretty easy! 
