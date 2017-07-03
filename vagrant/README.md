@@ -29,6 +29,8 @@ Original field names:
 
 # Initial Setup
 
+
+
 The vagrant box is configured to perform the project creation and
 data dictionary upload by default if you execute:
 
@@ -38,6 +40,16 @@ cd vagrant && vagrant up
 -- or just use the alias :) --
 make vup
 </pre>
+
+## Redcap zip
+Since this project sets up a redcap instance, it is necessary to have a zipped redcap 
+distribution. The should be placed in the vagrat/vagrant/ directory with the name "redcap<VERSION>.zip"
+
+## Project import
+There is a file called "redcap_deployment_functions.sh" which imports the metadata events and other 
+parts of a redcap project. Be advised that this can fail in ways which will not be reported in the log.
+The way to check is to go to redi2.dev/redcap and go to the api playground and attempt to load your data.
+This will often give more instructive error messages
 
 # Adding Forms
 
