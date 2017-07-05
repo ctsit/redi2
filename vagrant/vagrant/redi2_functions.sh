@@ -8,6 +8,7 @@ function install_redi2() {
         pushd redi2/build_scripts
         bash install_normal.sh
         popd
+    chown -R ${REDI2_USER}:${REDI2_USER} ./redi2
     popd
 }
 
