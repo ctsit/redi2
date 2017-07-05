@@ -118,10 +118,8 @@ Now if you check your redcap you should see that there are four subjects entered
 data run that we are about to do. Go back the terminal which is logged into the vagrant and do the following:
 
 - cd ~
-- cd redi2/synthetic/data
+- cd redi2/synthetic_data
 - In the synth.optimus.conf.yaml, synth.lineman.conf.yaml change the token to the one in the synth.pigeon.conf.yaml
-- run `cp synth.*.yaml ~/redi2/redi2/NEW_SITE/configs/`
-- run `cp synth.run.sh ~/redi2/redi2/NEW_SITE/`
 - run `bash synth_run_prepare.sh`
 - cd ~/redi2/redi2/NEW_SITE
 - run `bash synth.run.sh`

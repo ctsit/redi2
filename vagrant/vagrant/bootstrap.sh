@@ -34,24 +34,17 @@ REDCAP_ZIP=`ls $SHARED_FOLDER/redcap*.zip | grep "redcap[0-9]\{1,2\}\.[0-9]\{1,2
 . $SHARED_FOLDER/redcap_deployment_functions.sh
 . $SHARED_FOLDER/redi2_functions.sh
 
-# # Pick a fast mirror...or at least one that works
+# Pick a fast mirror...or at least one that works
 log "Picking a fast mirror in the US..."
 apt-get install -y netselect-apt
 cd /etc/apt/
 netselect-apt -c US > ~/netselect-apt.log 2>&1
 
-# add this to get php5
-log "Making sure we can apt-get php5..."
-echo "deb http://mirrors.linode.com/debian/ jessie main contrib non-free" >> /etc/apt/sources.list
-echo "deb-src http://mirrors.linode.com/debian/ jessie main contrib non-free" >> /etc/apt/sources.list
-
-echo "deb http://security.debian.org/ jessie/updates main contrib non-free" >> /etc/apt/sources.list
-echo "deb-src http://security.debian.org/ jessie/updates main non-free" >> /etc/apt/sources.list
-
-echo "# jessie-updates, previously known as 'volatile'" >> /etc/apt/sources.list
-echo "deb http://mirrors.linode.com/debian/ jessie-updates main contrib non-free" >> /etc/apt/sources.list
-echo "deb-src http://mirrors.linode.com/debian/ jessie-updates main contrib non-free" >> /etc/apt/sources.list
-
+# get that php5
+echo "deb http://debian.gtisc.gatech.edu/debian/ oldstable main contrib" > /etc/apt/sources.list
+echo "deb-src http://debian.gtisc.gatech.edu/debian/ oldstable main contrib" >> /etc/apt/sources.list
+echo "deb http://security.debian.org/ oldstable/updates main contrib" >> /etc/apt/sources.list
+echo "deb-src http://security.debian.org/ oldstable/updates main contrib" >> /etc/apt/sources.list
 # Update our repos
 log "Updating apt package indicies..."
 apt-get update
