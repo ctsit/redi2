@@ -193,18 +193,7 @@ key_header: *test_name
 test: &field_delete fjsdkl
 test: &format_date fjsdkl
 rows:
-  - row_key: WBC URINE
-    outputs:
-      - datum: *value_header
-        field: *wbc_val
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *wbc_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: NEUTROPHILS
+  - row_key: 26499-4
     outputs:
       - datum: *value_header
         field: *neut_percent
@@ -215,95 +204,7 @@ rows:
         date: *event_header
         subj: *subject
 
-  - row_key: SODIUM
-    outputs:
-      - datum: *value_header
-        field: *sodium
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *sodium_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: ALBUMIN
-    outputs:
-      - datum: *value_header
-        field: *albumin
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *albumin_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: AST (SGOT)
-    outputs:
-      - datum: *value_header
-        field: *serum_ast
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *serum_ast_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: ALT (SGPT)
-    outputs:
-      - datum: *value_header
-        field: *serum_alt
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *serum_alt_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: BILIRUBIN DIRECT
-    outputs:
-      - datum: *value_header
-        field: *dir_bil
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *dir_bil_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: BILIRUBIN TOTAL
-    outputs:
-      - datum: *value_header
-        field: *tot_bil
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *tot_bil_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: CREATININE
-    outputs:
-      - datum: *value_header
-        field: *creatinine
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *creatinine_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: GLUCOSE
-    outputs:
-      - datum: *value_header
-        field: *glucose
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *glucose_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: HEMOGLOBIN
+  - row_key: 718-7
     outputs:
       - datum: *value_header
         field: *hemoglobin
@@ -314,18 +215,7 @@ rows:
         date: *event_header
         subj: *subject
 
-  - row_key: LYMPHOCYTES
-    outputs:
-      - datum: *value_header
-        field: *lymphocytes
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *lymphocytes_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: LYMPHOCYTES ABSOLUTE COUNT
+  - row_key: 26474-7
     outputs:
       - datum: *value_header
         field: *lymphocytes_total_cells
@@ -336,7 +226,7 @@ rows:
         date: *event_header
         subj: *subject
 
-  - row_key: NEUTROPHILS ABSOLUTE COUNT
+  - row_key: 26499-4
     outputs:
       - datum: *value_header
         field: *abs_neut
@@ -347,7 +237,7 @@ rows:
         date: *event_header
         subj: *subject
 
-  - row_key: PLATELET COUNT
+  - row_key: 26515-7
     outputs:
       - datum: *value_header
         field: *platelets
@@ -355,38 +245,5 @@ rows:
         subj: *subject
       - datum: *unit_header
         field: *platelets_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: POTASSIUM
-    outputs:
-      - datum: *value_header
-        field: *potassium
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *potassium_unit
-        date: *event_header
-        subj: *subject
-
-  - row_key: INR
-    outputs:
-      - datum: *value_header
-        field: *inr_info
-        date: *event_header
-        subj: *subject
-
-  - row_key: HCV RNA, QUANTITATIVE REAL TIME PCR
-    outputs:
-      - datum: *value_header
-        field: *hcv_quant
-        date: *event_header
-        subj: *subject
-      - datum: *unit_header
-        field: *hcv_unit
-        date: *event_header
-        subj: *subject
-      - datum: *value_header
-        field: *hcv_prescence
         date: *event_header
         subj: *subject
