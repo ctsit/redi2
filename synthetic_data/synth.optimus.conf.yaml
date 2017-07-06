@@ -1,0 +1,249 @@
+# project specific processing
+
+project: "hcv_target"
+
+redcap_url: http://redi2.dev/redcap/api/ 
+token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+# redcap form stuff
+
+subject_field: &subject_field dm_subjid
+event_field: &event_field redcap_event_name
+
+derived_types:
+  status: &status status
+  hcv_status: &hcv_status hcv_status
+  date_completed: &date_completed date_completed
+
+cbc: &cbc
+  form_name: cbc_imported
+  form_imported: cbc_im_nximport
+  events: 200
+  csv_fields: 
+    record_id: &record_id dm_subjid
+    wbc_vel: &wbc_val wbc_im_lborres # white blood cell
+    wbc_unit: &wbc_unit wbc_im_lborresu
+    neutrophils_percent: &neut_percent neut_im_lborres
+    neutrophils_percent_unit: &neut_percent_unit neut_im_lborresu
+    absolute_neutrophils: &abs_neut anc_im_lborres
+    absolute_neutrophils_unit: &abs_neut_unit anc_im_lborresu
+    lymphocytes_total_cells: &lymphocytes_total_cells lym_im_lborres
+    lymphocytes_total_cells_unit: &lymphocytes_total_cells_unit lym_im_lborresu
+    lymphocytes: &lymphocytes lymce_im_lborres
+    lymphocytes_unit: &lymphocytes_unit lymce_im_lborresu
+    platelets: &platelets plat_im_lborres
+    platelets_unit: &platelets_unit plat_im_lborresu
+    hemoglobin: &hemoglobin hemo_im_lborres
+    hemoglobin_unit: &hemoglobin_unit hemo_im_lborresu
+  derived_fields:
+    wbc_completed: &wbc_complete
+      field: wbc_im_lbstat
+      type: *status
+      uses: [*wbc_val, *wbc_unit]
+    neutrophils_completed: &neut_complete
+      field: neut_im_lbstat
+      type: *status
+      uses: [*neut_percent, *neut_percent_unit]
+    absolute_neutrophils_completed: &abs_neut_complete
+      field: anc_im_lbstat
+      type: *status
+      uses: [*abs_neut, *abs_neut_unit]
+    lymphocytes_total_cells_completed: &lymce_complete
+      field: lym_im_lbstat
+      type: *status
+      uses: [*lymphocytes_total_cells, *lymphocytes_total_cells_unit]
+    lymphocytes_completed: &lym_complete
+      field: lymce_im_lbstat
+      type: *status
+      uses: [*lymphocytes, *lymphocytes_unit]
+    platelets_completed: &platelets_complete
+      field: plat_im_lbstat
+      type: *status
+      uses: [*platelets, *platelets_unit]
+    hemoglobin_completed: &hemoglobin_complete
+      field: hemo_im_lbstat
+      type: *status
+      uses: [*hemoglobin, *hemoglobin_unit]
+    done_date: &cbc_done_date
+      field: cbc_im_lbdtc
+      type: *date_completed
+      uses: *event_field
+    
+chemistry: &chemistry
+  form_name: chemistry_imported
+  form_imported: chem_im_nximport
+  events: 200
+  csv_fields: 
+    serum_alt: &serum_alt alt_lborres
+    serum_alt_unit: &serum_alt_unit alt_im_lborresu
+    serum_ast: &serum_ast ast_im_lborres
+    serum_ast_unit: &serum_ast_unit ast_im_lborresu
+    alkaline_phos: &alk_phos alp_im_lborres
+    alkaline_phos_unit: &alk_phos_unit alp_im_lborresu
+    total_bilirubin: &tot_bil tbil_im_lborres
+    total_bilirubin_unit: &tot_bil_unit tbil_im_lborresu
+    direct_bilirubin: &dir_bil dbil_im_lborres
+    direct_bilirubin_unit: &dir_bil_unit dbil_im_lborresu
+    albumin: &albumin alb_im_lborres
+    albumin_unit: &albumin_unit alb_im_lborresu
+    creatinine: &creatinine creat_im_lborres
+    creatinine_unit: &creatinine_unit creat_im_lborresu
+    glucose: &glucose gluc_im_lborres
+    glucose_unit: &glucose_unit gluc_im_lborresu
+    potassium: &potassium k_im_lborres
+    potassium_unit: &potassium_unit k_im_lborresu
+    sodium_value: &sodium sodium_im_lborres
+    sodium_unit: &sodium_unit sodium_im_lborresu
+  derived_fields:
+    done_date: &chem_done_date
+      field: chem_im_lbdtc
+      type: *date_completed
+      uses: *event_field
+    serum_alt_completed: &serum_alt_completed
+      field: alt_im_lbstat
+      type: *status
+      uses: [*serum_alt, *serum_alt_unit]
+    serum_ast_completed: &serum_ast_completed
+      field: ast_im_lbstat
+      type: *status
+      uses: [*serum_ast, *serum_ast_unit]
+    alkaline_phos_completed: &alk_phos_completed
+      field: alp_im_lbstat
+      type: *status
+      uses: [*alk_phos, *alk_phos_unit]
+    total_bilirubin_completed: &tot_bil_completed
+      field: tbil_im_lbstat
+      type: *status
+      uses: [*tot_bil, *tot_bil_unit]
+    direct_bilirubin_completed: &dir_bil_completed
+      field: dbil_im_lbstat
+      type: *status
+      uses: [*dir_bil, *dir_bil_unit]
+    albumin_completed: &albumin_completed
+      field: alb_im_lbstat
+      type: *status
+      uses: [*albumin, *albumin_unit]
+    creatinine_completed: &creatinine_completed
+      field: creat_im_lbstat
+      type: *status
+      uses: [*creatinine, *creatinine_unit]
+    glucose_completed: &glucose_completed
+      field: gluc_im_lbstat
+      type: *status
+      uses: [*glucose, *glucose_unit]
+    potassium_completed: &potassium_completed
+      field: k_im_lbstat
+      type: *status
+      uses: [*potassium, *potassium_unit]
+    sodium_completed: &sodium_completed
+      field: sodium_im_lbstat
+      type: *status
+      uses: [*sodium, *sodium_unit]
+
+inr: &inr
+  form_name: inr_imported
+  form_imported: inr_im_nximport
+  events: 120
+  csv_fields:
+    inr_info: &inr_info inr_im_lborres
+  derived_fields:
+    done_date: &inr_done_date
+      field: inr_im_lbdtc
+      type: *date_completed
+      uses: *event_field
+    inr_completed: &inr_completed
+      field: inr_im_lbstat
+      type: *status
+      uses: [*inr_info]
+
+hcvrna: &hcvrna
+  form_name: hcv_rna_imported
+  form_imported: hcv_nximport
+  events: 60
+  csv_fields:
+    hcv_quant: &hcv_quant hcv_im_lborres
+    hcv_unit: &hcv_unit hcv_im_lborresu
+    hcv_prescence: &hcv_prescence hcv_im_supplb_hcvdtct
+  derived_fields:
+    done_date: &rna_done_date
+      field: hcv_im_lbdtc
+      type: *date_completed
+      uses: *event_field
+    has_quant:
+      field: hcv_im_supplb_hcvquant
+      uses: [*hcv_quant, *hcv_unit, *hcv_prescence]
+      type: *hcv_status
+
+forms:
+  - *cbc
+  - *chemistry
+  - *inr
+  - *hcvrna
+
+# csv stuff
+delimiter: ','
+quotechar: '"'
+headers:
+  subject_header: &subject STUDY_ID
+  value_header: &value_header ORD_VALUE
+  unit_header: &unit_header REFERENCE_UNIT
+  event_header: &event_header RESULT_DATE
+  test_ident_header: &test_name NAME
+
+key_header: *test_name
+test: &field_delete fjsdkl
+test: &format_date fjsdkl
+rows:
+  - row_key: 26499-4
+    outputs:
+      - datum: *value_header
+        field: *neut_percent
+        date: *event_header
+        subj: *subject
+      - datum: *unit_header
+        field: *neut_percent_unit
+        date: *event_header
+        subj: *subject
+
+  - row_key: 718-7
+    outputs:
+      - datum: *value_header
+        field: *hemoglobin
+        date: *event_header
+        subj: *subject
+      - datum: *unit_header
+        field: *hemoglobin_unit
+        date: *event_header
+        subj: *subject
+
+  - row_key: 26474-7
+    outputs:
+      - datum: *value_header
+        field: *lymphocytes_total_cells
+        date: *event_header
+        subj: *subject
+      - datum: *unit_header
+        field: *lymphocytes_total_cells_unit
+        date: *event_header
+        subj: *subject
+
+  - row_key: 26499-4
+    outputs:
+      - datum: *value_header
+        field: *abs_neut
+        date: *event_header
+        subj: *subject
+      - datum: *unit_header
+        field: *abs_neut_unit
+        date: *event_header
+        subj: *subject
+
+  - row_key: 26515-7
+    outputs:
+      - datum: *value_header
+        field: *platelets
+        date: *event_header
+        subj: *subject
+      - datum: *unit_header
+        field: *platelets_unit
+        date: *event_header
+        subj: *subject

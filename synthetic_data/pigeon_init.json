@@ -1,0 +1,22 @@
+[
+    {
+        "dm_subjid": 1,
+        "dm_usubjid": "10",
+        "redcap_event_name": "1_arm_1"
+    },
+    {
+        "dm_subjid": 2,
+        "dm_usubjid": "20",
+        "redcap_event_name": "1_arm_1"
+    },
+    {
+        "dm_subjid": 3,
+        "dm_usubjid": "30",
+        "redcap_event_name": "1_arm_1"
+    },
+    {
+        "dm_subjid": 4,
+        "dm_usubjid": "40",
+        "redcap_event_name": "1_arm_1"
+    }
+]

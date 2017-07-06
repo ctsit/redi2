@@ -1,0 +1,81 @@
+# mapping for which header text corresponds to which piece of data
+header_meaning:
+  subject: &subject STUDY_ID
+  lab_type: &lab_type NAME
+  value: &value ORD_VALUE
+  unit: &unit REFERENCE_UNIT
+  test_date: &test_date RESULT_DATE
+
+sort:
+  header: *subject
+
+# put expected headers here, any others will be ignored
+headers: &headers
+  - *subject
+  - *lab_type
+  - *value
+  - *unit
+  - *test_date
+
+# csv format stuff
+csv_conf:
+  delimiter: ","
+  quotechar: "\""
+
+quotechar_write: "\""
+csv_encoding: utf-8
+
+# list of all mappings available
+maps: &maps
+  - &format_date format_date
+  - &whitelist is_whitelist
+  - &blacklist is_blacklist
+  - &regex regex
+  - &empty_okay empty_okay
+
+# these are maps that use more than one cell
+arg_maps:
+  - &greater_equal greater_equal
+
+control_strings:
+  empty_okay: "<NO_VALUE_NEEDED>"
+
+error_strings:
+  bad_data: "<BAD_DATA>"
+  empty_cell: "<EMPTY_CELL>"
+  blacklisted: "<ON_BLACKLIST>"
+  not_whitelisted: "<NOT_ON_WHITELIST>"
+  no_regex_match: "<NO_REGEX_MATCH_FOUND>"
+
+# list of values that are whitelisted for each header
+whitelist: &whitelist_vals
+  - header_name: *lab_type
+    vals_file_path: configs/empty.yaml
+  - header_name: *subject
+    vals_file_path: configs/empty.yaml
+
+# list of values that are blacklisted
+blacklist: &blacklist_vals
+  - header_name: *subject
+    vals_file_path: configs/empty.yaml
+  - header_name: *value
+    vals_file_path: configs/empty.yaml
+
+# capture something and pass it along
+regexs: &regexs
+  - header_name: *value
+    vals_file_path: configs/example_regex_capture.yaml
+
+# mappings try to parse data to another form
+# will pass the value through the maps in left to right order
+mappings: &mappings
+  - header: *test_date
+    maps: [*format_date]
+  - header: *lab_type
+    maps: []
+  - header: *value
+    maps: [*regex, *blacklist]
+  - header: *subject
+    maps: []
+  - header: *unit
+    maps: [*empty_okay]
