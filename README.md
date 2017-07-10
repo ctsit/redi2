@@ -108,7 +108,10 @@ at a time.
 RED-I2 can be tested on a vagrant. In order to do so the following steps need to be completed in order.
 
 - clone the repo
-- go into the vagrant/vagrant director and run vagrant up. (Make sure to install the plugins in the plugins.txt file)
+- go into the redi2/vagrant/vagrant directory
+- get a copy of redcap version 6.16.8 zip file and place in the redi2/vagrant/vagrant directory with the name redcap6.16.8.zip
+- rename the file `rename_to_dot_env` to `.env` in the same directory
+- run vagrant up. (Make sure to install the plugins in the plugins.txt file)
 - open your browser to http://redi2.dev/redcap/ and go to the api, take note of your token
 - run vagrant ssh from the vagrant/vagrant directory and go to ~/redi2/synthetic_data
 - edit the synth.pigeon.conf.yaml and insert the token from before
