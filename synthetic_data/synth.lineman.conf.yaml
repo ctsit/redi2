@@ -1,0 +1,9 @@
+cappy_version: lineman.json
+event_assignment_strategy: chronological
+arm_order: [1]
+token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+redcap_url: http://redi2.dev/redcap/api/
+subject_id: dm_subjid
+check_mappings:
+  - key: dm_subjid
+    match_against: dm_usubjid

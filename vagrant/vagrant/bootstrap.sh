@@ -32,7 +32,7 @@ REDCAP_ZIP=`ls $SHARED_FOLDER/redcap*.zip | grep "redcap[0-9]\{1,2\}\.[0-9]\{1,2
 # import helper functions
 . $SHARED_FOLDER/bootstrap_functions.sh
 . $SHARED_FOLDER/redcap_deployment_functions.sh
-. $SHARED_FOLDER/redi_functions.sh
+. $SHARED_FOLDER/redi2_functions.sh
 
 # Pick a fast mirror...or at least one that works
 log "Picking a fast mirror in the US..."
@@ -40,6 +40,11 @@ apt-get install -y netselect-apt
 cd /etc/apt/
 netselect-apt -c US > ~/netselect-apt.log 2>&1
 
+# get that php5
+echo "deb http://debian.gtisc.gatech.edu/debian/ oldstable main contrib" > /etc/apt/sources.list
+echo "deb-src http://debian.gtisc.gatech.edu/debian/ oldstable main contrib" >> /etc/apt/sources.list
+echo "deb http://security.debian.org/ oldstable/updates main contrib" >> /etc/apt/sources.list
+echo "deb-src http://security.debian.org/ oldstable/updates main contrib" >> /etc/apt/sources.list
 # Update our repos
 log "Updating apt package indicies..."
 apt-get update
@@ -81,7 +86,6 @@ configure_php_for_redcap
 configure_redcap_cron
 move_edocs_folder
 set_hook_functions_file $PATH_TO_APP_IN_GUEST_FILESYSTEM/hooks/hooks.php
-make_twilio_features_visible
 configure_exim4
 check_redcap_status
 
@@ -97,17 +101,9 @@ populate_db $DB $DB_APP_USER $DB_APP_PASSWORD $PATH_TO_REPO_ROOT_IN_GUEST_FILESY
 # Deploy every REDCAp project defined in the ./projects folder
 deploy_projects
 
-# Deploy HCV Target software components
-. /vagrant/hcvtarget_sw_deployment_functions.sh
-hcvtarget_overlay_redcap_code $PATH_TO_REPO_ROOT_IN_GUEST_FILESYSTEM $PATH_TO_APP_IN_GUEST_FILESYSTEM
 
-HCVTARGET_PID=`python ${PROJECT_MANAGEMENT_SCRIPTS}/read_project.py ${PATH_TO_REPO_ROOT_IN_GUEST_FILESYSTEM}/projects/00_hcvtarget/project.info project_id`
-hcvtarget_rewrite_hook_pid "HCVTARGET" 26 ${HCVTARGET_PID} $PATH_TO_APP_IN_GUEST_FILESYSTEM
-
-PRIORITIZE_PID=`python ${PROJECT_MANAGEMENT_SCRIPTS}/read_project.py ${PATH_TO_REPO_ROOT_IN_GUEST_FILESYSTEM}/projects/01_prioritize/project.info project_id`
-hcvtarget_rewrite_hook_pid "PRIORITIZE" 38 ${PRIORITIZE_PID} $PATH_TO_APP_IN_GUEST_FILESYSTEM
-
-remove_default_projects
-
-install_redi
+install_redi2
 # install_gsm
+
+
+echo "DONE Now check the project README to see how to continue the testing process."

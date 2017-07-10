@@ -69,6 +69,7 @@ END
     echo mysql-community-server mysql-community-server/root-pass           password $DATABASE_ROOT_PASS | debconf-set-selections
     echo mysql-community-server mysql-community-server/re-root-pass        password $DATABASE_ROOT_PASS | debconf-set-selections
 
+    apt-get install -y python3
     apt-get install -y apache2
     apt-get install -y mysql-community-server
     apt-get install -y php5 php5-mysql php5-mcrypt php5-gd

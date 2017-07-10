@@ -10,7 +10,11 @@ This VM requires that Vagrant, VirtualBox, vagrant-hostsupdater plugin, vagrant-
 
 See [Creating the Test VM With Vagrant](docs/creating_the_test_vm_with_vagrant.rst) for details on how to meet those requirements.
 
+There are numerous environment variables that need to be set. Make sure to run the following command
+`cp rename_to_dot_env .env`
+
 ## Using the Development Environment
+
 
 With the above requirements and configuration completed, start the VM with the command
 

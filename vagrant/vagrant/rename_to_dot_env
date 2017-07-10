@@ -6,8 +6,8 @@ PATH_TO_APP_IN_GUEST_FILESYSTEM=/var/www/redcap
 PATH_TO_REPO_ROOT_IN_GUEST_FILESYSTEM=/vagrant_hcvtarget
 CONFIG_VM_BOX=puppetlabs/debian-8.2-64-nocm
 VM_IP=192.168.33.242
-FORWARDED_PORT_443=56241
-FORWARDED_PORT_80=46241
+FORWARDED_PORT_443=44443
+FORWARDED_PORT_80=44080
 
 # MySQL Database Connection details
 DUMP_SCHEMA_DEV=schema.sql
@@ -44,14 +44,10 @@ ADMIN_USER_TOKEN_FILE_LOCATION='/vagrant/project_management_scripts/admin_user.t
 ADMIN_USER_TOKEN_FILE_NAME=admin_user.token
 
 # next line start with the same value as URL_OF_DEPLOYED_APP and end with '/api/'
-URL_OF_API=http://hcvtargetrc.dev/redcap/api/
+URL_OF_API=http://redi2.dev/redcap/api/
 
-# RED-I Related Settings
-REDI_USER=vagrant
-REDI_USER_GROUP=vagrant
-REDI_USER_HOME=/home/vagrant
-REDI_VERSION=0.15.4
-RSM_INSTALL_URL=https://github.com/ctsit/research-subject-mapper/releases/download
-RSM_VERSION=0.10.5
-RSM_PYTHON_VERSION=py2.7
-REDI_REQUIREMENTS_FILE=/vagrant/redi_requirements.txt
+# RED-I2 Related Settings
+REDI2_USER=vagrant
+REDI2_USER_GROUP=vagrant
+REDI2_USER_HOME=/home/vagrant
+REDI2_REPO=https://github.com/PFWhite/redi2.git
