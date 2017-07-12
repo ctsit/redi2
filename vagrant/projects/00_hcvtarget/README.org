@@ -1,0 +1,13 @@
+* HCV target
+This project contains the files needed to initialize an HCV target project as of <2017-07-03 Mon> 
+
+** Version information
+This data was tested with redcap version 6.16.8 and it requires removing two of the values from
+the text_validation_type_or_show_slider_number header. The offending fields are
+- subject_id
+- year_only
+
+These may work in a different redcap version and any more information should be placed in this 
+file when it is found out
+
+

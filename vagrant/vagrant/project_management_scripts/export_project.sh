@@ -1,0 +1,3 @@
+python export_data.py C404304BD96C5E0AC6E4D75500F33EE3 http://hcvtargetrc.dev/redcap/api/ metadata /vagrant_hcvtarget/projects/02_hcvodmtest/form_export_list.ini csv /vagrant_hcvtarget/projects/02_hcvodmtest/metadata.csv
+python export_data.py C404304BD96C5E0AC6E4D75500F33EE3 http://hcvtargetrc.dev/redcap/api/ event /vagrant_hcvtarget/projects/02_hcvodmtest/event_export_list.ini csv /vagrant_hcvtarget/projects/02_hcvodmtest/event.csv
+python export_data.py C404304BD96C5E0AC6E4D75500F33EE3 http://hcvtargetrc.dev/redcap/api/ formEventMapping /vagrant_hcvtarget/projects/02_hcvodmtest/event_export_list.ini csv /vagrant_hcvtarget/projects/02_hcvodmtest/event_map.csv

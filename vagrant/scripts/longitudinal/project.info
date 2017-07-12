@@ -1,0 +1,9 @@
+[DEFAULT]
+url = http://127.0.0.1/redcap/index.php
+version = 6.0.5
+url_versioned = http://127.0.0.1/redcap/redcap_v6.0.5
+projectname = Test Project
+api_token = 5A93677FC751C9592492BF79A8001793
+projectid = 12
+mapped_events = {40: [u'a1_form_demographics', u'a2_form_conmeds'], 41: [u'a2_form_conmeds']}
+
