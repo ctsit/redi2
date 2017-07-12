@@ -1,4 +1,4 @@
-# REDI2 v1.0.0
+# REDI2 v1.0.1
 REDCap Electronic Data - I (Ingester/Integrator/Importer) 2
 
 ## Meet the parts of redi2 ##
