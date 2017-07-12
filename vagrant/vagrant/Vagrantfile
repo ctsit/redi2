@@ -7,6 +7,7 @@ Vagrant.configure(2) do |config|
   config.env.enable
 
   config.vm.hostname = ENV["HOSTNAME_IN_GUEST"]
+  config.vm.define "REDI2"
   config.vm.box = ENV["CONFIG_VM_BOX"]
 
   # Disable automatic box update checking. If you disable this, then
