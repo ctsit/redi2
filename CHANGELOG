@@ -1,3 +1,9 @@
+## [1.0.1] - 2017-07-12
+### Bugfixs
+ * Update README.md (Christopher P. Barnes)
+ * Add vm name (Patrick White)
+ * Add redcap_deployment_functions.sh (Patrick White)
+
 ## [1.0.0] - 2017-07-12
 ### Initial release
  * Add configs for synthetic data run (Patrick White)
