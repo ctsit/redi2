@@ -1,0 +1,14 @@
+## [1.0.0] - 2017-07-12
+### Initial release
+ * Add configs for synthetic data run (Patrick White)
+ * Add synthetic data scripts (Patrick White)
+ * Add synthetic data (Patrick White)
+ * Add an .env example needed to use vagrant with redcap and projects (Christopher Barnes)
+ * Add data flow diagram (PFWhite)
+ * Adding in redcap hcv target testing vagrant (Christopher Barnes)
+ * Add TODO items for build source that will have clone statements for a specific release tag (Christopher Barnes)
+ * Utilize existing local packages on install 2 (Patrick White)
+ * chmods +x the files that should be run by a human (Patrick White)
+ * Adds support for remote deploys on disconnected machines (Patrick White)
+ * Add deploy scripts (Patrick White)
+ * Initial commit (PFWhite)
