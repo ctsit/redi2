@@ -101,3 +101,6 @@ redi2/*/log
 tmp/*
 .vagrant
 redcap*.zip
+
+# install 2 packaging file
+redi2.tar.gz

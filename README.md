@@ -84,7 +84,9 @@ Clone this repo and enter it.
 
 Run `bash install_normal.sh`.
 
-Edit the `NEW_SITE` directory in the `redi2` directory to have the right name and configs.
+Edit the `NEW_SITE` directory in the `redi2` directory to have the right name.
+
+Build your configs in the `configs` directory
 
 Set the `run.sh` script to run when you want it to.
 
@@ -108,20 +110,49 @@ will be deploying and bringing all that stuff over.
   * ssh access
   * python3
   * virtualenv
+  
+#### Vagrant Steps ####
 
-#### Steps ####
+By using vagrant up, one gets a copy of the redi2.tar.gz in `repo/vagrant/redi2_deploy_tar` that is used in the 
+manual steps. It will be build on the debian jessie vagrant and bundled from there. If you want to skip the
+steps that take place on System 1 then this is what you should do.
+
+##### Host machine #####
+
+`cd redi2/vagrant/vagrant`
+
+`vagrant up`
+
+Now go to the "Host machine" section of the "Manual Steps" and continue from there using the tar in
+`redi2/vagrant/redi2_deploy_tar`
+
+#### Manual Steps ####
+
+##### System 1 #####
 
 Clone this repo and enter it on System 1.
 
+`cd redi2/build_scripts`
+
 Run `bash package.sh`.
 
-Use `scp` to get the `redi2` directory to the target system. It will be in the directory above.
+Return to the directory where redi2 was cloned.
 
-Use `ssh` to gain access to the target system. Extract the directory to the location you want to install redi2.
+##### Host machine #####
+
+Use `scp` to get the `redi2.tar.gz` directory to System 2. It will be in the directory above.
+
+Use `ssh` to gain access to System 2. 
+
+##### System 2 #####
+
+Run `tar -xzf redi2.tar.gz` to extract the directory in the location that you want to install redi2
 
 Run `bash install_two_remote.sh`
 
-Edit the `NEW_SITE` directory in the `redi2` directory to have the right name and configs.
+Edit the `NEW_SITE` directory in the `redi2` directory to have the right name.
+
+Build your configs in the `configs` directory
 
 Run `source correct_path.env` to correct the python path. This needs to be done everytime you run the tools in the 
 venv or not.
