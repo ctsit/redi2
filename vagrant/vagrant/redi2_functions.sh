@@ -6,13 +6,14 @@ function install_redi2() {
     git clone ${REDI2_REPO}
     chown -R ${REDI2_USER}:${REDI2_USER} ./redi2
         pushd redi2/build_scripts
-        bash install_normal.sh
         # prepare a install2 tar
         bash package.sh
+        # then install normally for synthetic runs
+        bash install_normal.sh
         popd
     chown -R ${REDI2_USER}:${REDI2_USER} ./redi2
     chown -R ${REDI2_USER}:${REDI2_USER} ./redi2.tar.gz
-    cp redi2.tar.gz ${PATH_TO_REPO_ROOT_IN_GUEST_FILE_SYSTEM}/redi2_deploy_tar/
+    cp redi2.tar.gz /vagrant_redi2/redi2_deploy_tar/
     popd
 }
 

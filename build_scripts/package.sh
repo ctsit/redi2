@@ -19,14 +19,6 @@ find packages/ -name "__pycache__" | xargs rm -rf
 find packages/ -name "*.egg-info" | xargs rm -rf
 find packages/ -name "*.pyc" | xargs rm -rf
 
-echo "Removing things you will install from source on the target"
-find packages/ -name "cappy*" | xargs rm -rf
-find packages/ -name "claw*" | xargs rm -rf
-find packages/ -name "auditor*" | xargs rm -rf
-find packages/ -name "optimus*" | xargs rm -rf
-find packages/ -name "lineman*" | xargs rm -rf
-find packages/ -name "pigeon*" | xargs rm -rf
-
 echo "Removing the virtualenv"
 deactivate
 rm -rf venv

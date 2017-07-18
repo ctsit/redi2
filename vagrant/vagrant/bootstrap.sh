@@ -53,6 +53,9 @@ apt-get update
 log "Execute: install_utils..."
 install_utils
 
+log "Install python3 venv and dev"
+apt-get install python3-venv python3-dev -y
+
 log "Execute: install_prereqs..."
 install_prereqs $MYSQL_REPO $DB_ROOT_PASS
 apt-get install -y php-pear php5-curl
