@@ -148,14 +148,15 @@ Use `ssh` to gain access to System 2.
 
 Run `tar -xzf redi2.tar.gz` to extract the directory in the location that you want to install redi2
 
+`cd redi2/deploy_scripts`
+
 Run `bash install_two_remote.sh`
 
 Edit the `NEW_SITE` directory in the `redi2` directory to have the right name.
 
 Build your configs in the `configs` directory
 
-Run `source correct_path.env` to correct the python path. This needs to be done everytime you run the tools in the 
-venv or not.
+Add `source ../correct_path.env` to the line right below the virtualenv source line in the run.sh
 
 Set the `run.sh` script to run when you want it to.
 

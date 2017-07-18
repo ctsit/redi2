@@ -1,8 +1,9 @@
 echo "Installing packages"
 source ../venv/bin/activate
-pip3 install -f ../packages -e ./cappy
-pip3 install -f ../packages -e ./claw
-pip3 install -f ../packages -e ./auditor
-pip3 install -f ../packages -e ./optimus
-pip3 install -f ../packages -e ./lineman
-pip3 install -f ../packages -e ./pigeon
+source ../correct_path.env
+pip3 install -f ../packages --no-index -e ./cappy
+pip3 install -f ../packages --no-index -e ./claw
+pip3 install -f ../packages --no-index -e ./auditor
+pip3 install -f ../packages --no-index -e ./optimus
+pip3 install -f ../packages --no-index -e ./lineman
+pip3 install -f ../packages --no-index -e ./pigeon

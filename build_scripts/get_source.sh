@@ -12,7 +12,7 @@ git clone --branch 1.1.0 https://github.com/PFWhite/cappy.git
 git clone --branch 1.2.0 https://github.com/DevMattM/claw.git
 
 # Optimus transforms csvs into redcap project specific json
-git clone --branch 1.0.0 https://github.com/PFWhite/optimus.git
+git clone --branch 1.0.1 https://github.com/PFWhite/optimus.git
 
 # lineman is the tool to make sure the JSON input data is properly formatted
 # to go into REDCAP
