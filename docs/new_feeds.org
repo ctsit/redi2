@@ -1,19 +1,19 @@
 * Setting Up New Feeds for HCV and Prioritize
 A lot of the work in setting up new feeds for these two projects has been done.
 There is really just a checklist of things that need to be done in order to get
-additionally feeds flowing into redcap.
+additional feeds flowing into REDCap.
 
 Before starting this process make sure that you have access to a sample of the 
-csv from the site as well as the token and url that you intent to use.
+csv from the site as well as the token and url that you intend to use.
 
-** REDI2 Deploy
-Check that tools3 has a redi2 deploy on it. You can do this by logging into the
+** REDI2 deploy
+Check that tools3 has a redi2 deploy on it. You can do this by logging in as the
 redi2 user and seeing if there is a redi2 directory in the home directory.
 
 ** Add a site
 Inside the deployed redi2 directory there exists a build script called new_site.sh.
 This script needs to be run from the redi2 deployed directory so the command you will
-run will be
+run will be:
 
 #+BEGIN_SRC bash
 
@@ -29,17 +29,18 @@ deploy for LSU would be called hcvtarget_lsu or something similar.
 ** Alter the configs
 This part is rather involved but there really aren't that many changes to make. 
 
-There are two approaches, from the EMR csv forward to REDCAP or backward from the 
-REDCAP to the EMR csv. We will go forward but you can follow the steps the other
+There are two approaches, from the EMR csv forward to REDCap or backward from the 
+REDCap to the EMR csv. We will go forward but you can follow the steps the other
 direction and get the same result.
 
-Make sure to be careful with indentation. Yaml uses indentation to determine which
-block data should belong to here.
+
+Make sure to be careful with indentation. YAML uses indentation to determine to which
+block data should belong.
 
 *** Claw
 By default the claw.conf.yaml will look like the following
 #+BEGIN_SRC yaml
-# This is an example config file to connect to a free public sftp
+# This is an example config file to connect to a free public SFTP
 # test server. It will not copy any data, but will connect and close.
 
 # One note, in order for Claw to run, the system running it needs to
