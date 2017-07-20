@@ -1,4 +1,4 @@
-* Setting up new feeds for HCV and Prioritize
+* Setting Up New Feeds for HCV and Prioritize
 A lot of the work in setting up new feeds for these two projects has been done.
 There is really just a checklist of things that need to be done in order to get
 additionally feeds flowing into redcap.
@@ -6,7 +6,7 @@ additionally feeds flowing into redcap.
 Before starting this process make sure that you have access to a sample of the 
 csv from the site as well as the token and url that you intent to use.
 
-** REDI2 deploy
+** REDI2 Deploy
 Check that tools3 has a redi2 deploy on it. You can do this by logging into the
 redi2 user and seeing if there is a redi2 directory in the home directory.
 
@@ -33,8 +33,8 @@ There are two approaches, from the EMR csv forward to REDCAP or backward from th
 REDCAP to the EMR csv. We will go forward but you can follow the steps the other
 direction and get the same result.
 
-Make sure to be careful with indentation. Yaml uses indentation to determine to which
-block data should belong.
+Make sure to be careful with indentation. Yaml uses indentation to determine which
+block data should belong to here.
 
 *** Claw
 By default the claw.conf.yaml will look like the following
@@ -61,7 +61,7 @@ arguments:
 
 #+END_SRC
 
-In order to get it to properly download make it match the next block. NOTE variable
+In order to get it to properly download, you need to make it match the next block. NOTE variable
 names are going to be enclosed in <> and capital letters.
 #+BEGIN_SRC yaml
 # One note, in order for Claw to run, the system running it needs to
@@ -130,7 +130,7 @@ csv_conf:
 #+END_SRC
 **** csv_encoding
 This section tells python how to read the file. The EMR file recieved could be something other
-than utf-8 and in that case you will need to add the right python file encoding flag.
+than utf-8 and in that case you will need to add the right Python file encoding flag.
 
 You can find the encoding of a file by using the bash `file` command. The following is used
 at a few sites though most of the time this field should be left as utf-8
@@ -138,7 +138,7 @@ at a few sites though most of the time this field should be left as utf-8
 csv_encoding: latin1
 #+END_SRC
 **** whitelist, blacklist, regex
-Delete the following sections from the file. It will be used in more advanced configurations
+Delete the following sections from the file. It will be used in more advanced configurations.
 
 #+BEGIN_SRC yaml
 # list of values that are whitelisted for each header
@@ -161,8 +161,8 @@ regexs: &regexs
     vals_file_path: configs/example_regex_capture.yaml
 #+END_SRC
 **** mappings
-Finally make the mappings section at the bottom look like the following
-Be sure to delete the consent date portion
+Finally, make the mappings section at the bottom look like the following:
+(Be sure to delete the consent date portion.)
 #+BEGIN_SRC yaml
 mappings: &mappings
   - header: *test_date
@@ -177,20 +177,20 @@ mappings: &mappings
     maps: [*empty_okay]
 #+END_SRC
 *** Optimus
-Depending on the project that you are deploying, (hcv or prioritize) you should delete the other
-example config for optimus, then rename the correct one to 'optimus.conf.yaml'
+Depending on the project that you are deploying, (HCV or PRIORITIZE) you should delete the other
+example config for Optimus, then rename the correct one to 'optimus.conf.yaml'
 
 
-Otherwise there is little configuration to do. Most of it has already been done. The only thing
-to change is the redcap_url and token that are used to validate the configuration
+Otherwise, there is little configuration to do. Most of it has already been done. The only thing
+to change is the redcap_url and token that are used to validate the configuration.
 #+BEGIN_SRC yaml
 redcap_url: http://hcvtargetrc.dev/redcap/api/
 token: BF737141CE84F98B749A204F5A0CEE41
 #+END_SRC
 *** Lineman
-Lineman requires next to no changes to get working. Just make the following portion in the
-config have the proper api url and token. The following is what will be in those
-two places by default 
+Lineman requires very few changes to get working. Just make the following section in the
+config have the proper API URL and token. The following is what will be in those
+two places by default:
 
 #+BEGIN_SRC yaml
 
@@ -200,9 +200,9 @@ redcap_url: http://hcvtargetrc.dev/redcap/api/
 #+END_SRC
 
 *** Pigeon
-Pigeon requires next to no changes to get working. Just make the following portion in the
-config have the proper api url and token. The following is what will be in those
-two places by default 
+Pigeon requires very few changes to get working. Just make the following section in the
+config have the proper API URL and token. The following is what will be in those
+two places by default: 
 
 #+BEGIN_SRC yaml
 
@@ -211,10 +211,10 @@ redcap_url: http://hcvtargetrc.dev/redcap/api/
 
 #+END_SRC
 ** Alter the run.sh file
-The run.sh file in the site root should not need to be changed at all for install 1. Make sure that if you
-want to do a 'dry' run to comment out the pigeon portion which will change data in the redcap.
+The run.sh file in the site root should not need to be changed at all for Install 1. Make sure that if you
+want to do a 'dry' run to comment out the pigeon portion which will change data in the REDCap project.
 
-If you did install 2 on a disconnected system, the following needs to be added to the run.sh
+If you did install 2 on a disconnected system, the following needs to be added to the run.sh:
 #+BEGIN_SRC bash
 source ../correct_path.env
 #+END_SRC
@@ -224,10 +224,10 @@ it right after the virtual environment is sourced
 ** Add the cron job
 Finally add the job to the cron tab using `crontab -e`
 
-Make sure that there are 60 minutes between runs for safeties sake in case the pigeon run needs
-to fail over to the singles upload strategy.
+To be safe, make sure that there are 60 minutes between runs. This is in case the Pigeon run needs
+to fail over to the Singles Upload Strategy.
 
-The script that should be run is as follows. 
+The script that should be run is as follows: 
 
 #+BEGIN_SRC bash
 echo "cd /data/redi/redi2/redi2/<MY_SITE>; bash run.sh" | bash
