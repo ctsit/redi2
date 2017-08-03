@@ -181,13 +181,56 @@ mappings: &mappings
 Depending on the project that you are deploying, (HCV or PRIORITIZE) you should delete the other
 example config for Optimus, then rename the correct one to 'optimus.conf.yaml'
 
-
-Otherwise, there is little configuration to do. Most of it has already been done. The only thing
-to change is the redcap_url and token that are used to validate the configuration.
+The next thing to change is the redcap_url and token that are used to validate the configuration.
 #+BEGIN_SRC yaml
 redcap_url: http://hcvtargetrc.dev/redcap/api/
 token: BF737141CE84F98B749A204F5A0CEE41
 #+END_SRC
+
+
+For the rest of the config it's important to keep in mind how optimus works. First it reads through
+all the rows of the csv, grabbing little quanta of data from it, sometimes multiple per row, and then
+it will use the form configs and the code in the project specific module to transform the data into
+something that redcap wants to consume. The top level keys in the optimus config `key_header` and
+`rows` say which column to look at to distinguish rows (in our case which lab this is) and how to get
+the quanta of data out of the rows respectively
+
+#+BEGIN_SRC yaml
+key_header: *test_name
+rows: []
+# rows can also use the `-` list syntax
+#+END_SRC
+
+So while the form configs are done and should not change, the portion that pulls data out of the csv
+may need to be adjusted. For example, look at the following section that is in the optimus.hcv.conf.yaml
+file:
+
+#+BEGIN_SRC yaml
+  - row_key: WBC URINE
+    outputs:
+      - datum: *value_header
+        field: *wbc_val
+        date: *event_header
+        subj: *subject
+      - datum: *unit_header
+        field: *wbc_unit
+        date: *event_header
+        subj: *subject
+#+END_SRC
+
+Lets go through line by line and say what each thing means. The `row_key` specifies the string that will
+be found in the `key_header` column which identifies the data we extract.
+
+The `outputs` key is a list of dictionaries that have four parts: datum, field, date, and subj (subject) keys. 
+The purpose of the datum piece is to say where the datum we will brin to redcap is located. The field is 
+the field_name of the redcap field into which we are pushing the data. The date is the name of the column that
+specifies when the data was generated (important for longitudinal projects). And finally the subj field indicates
+which column contains the subject identifier field.
+
+When building out a new site the main thing that may need to change here is the `row_key` field for each piece of
+data. So in the preceding example if 'wbc_im_lborres' needs to come from a row in a csv that has a lab named something
+other than 'WBC URINE' then change that string to the right one.
+
 *** Lineman
 Lineman requires very few changes to get working. Just make the following section in the
 config have the proper API URL and token. The following is what will be in those
