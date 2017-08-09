@@ -94,6 +94,7 @@ ENV/
 # project specific stuff
 # here be dragons / P.H.I.
 redi2/*/configs
+jhu_configs
 redi2/*/data
 redi2/*/log
 
@@ -101,3 +102,9 @@ redi2/*/log
 tmp/*
 .vagrant
 redcap*.zip
+
+# install 2 packaging file
+redi2.tar.gz
+
+# other
+lab_regex.yaml

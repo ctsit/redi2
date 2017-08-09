@@ -1,0 +1,279 @@
+* Setting Up New Feeds for HCV and Prioritize
+A lot of the work in setting up new feeds for these two projects has been done.
+There is really just a checklist of things that need to be done in order to get
+additional feeds flowing into REDCap.
+
+Before starting this process make sure that you have access to a sample of the 
+csv from the site as well as the token and url that you intend to use.
+
+** REDI2 deploy
+Check that tools3 has a redi2 deploy on it. You can do this by logging in as the
+redi2 user and seeing if there is a redi2 directory in the home directory.
+
+** Add a site
+Inside the deployed redi2 directory there exists a build script called new_site.sh.
+This script needs to be run from the redi2 deployed directory so the command you will
+run will be:
+
+#+BEGIN_SRC bash
+
+bash build_scripts/new_site.sh
+
+#+END_SRC
+
+This will put a directory called `NEW_SITE` in the redi2/redi2 directory.
+Here is where you will continue the deployment of the new site.
+
+Make sure to rename the `NEW_SITE` to something relevant. For instance, a hcvtarget
+deploy for LSU would be called hcvtarget_lsu or something similar.
+** Alter the configs
+This part is rather involved but there really aren't that many changes to make. 
+
+There are two approaches, from the EMR csv forward to REDCap or backward from the
+REDCap to the EMR csv. We will go forward but you can follow the steps the other
+direction and get the same result.
+
+
+Make sure to be careful with indentation. YAML uses indentation to determine to which
+block data should belong.
+
+*** Claw
+By default the claw.conf.yaml will look like the following
+#+BEGIN_SRC yaml
+# This is an example config file to connect to a free public SFTP
+# test server. It will not copy any data, but will connect and close.
+
+# One note, in order for Claw to run, the system running it needs to
+# have already trusted the server. To do this, just 'ssh test.rebex.net'
+# and allow the system to add it.
+
+arguments:
+  --destination: null 
+  --help: False
+  --key_path: null
+  --key_pw: null
+  --password: password 
+  --username: demo 
+  --verbose: False
+  --version: False
+  <ftp_host>: test.rebex.net
+  <ftp_port>: 22
+  <remote_file_path>: [test] 
+
+#+END_SRC
+
+In order to get it to properly download, you need to make it match the next block. NOTE variable
+names are going to be enclosed in <> and capital letters.
+#+BEGIN_SRC yaml
+# One note, in order for Claw to run, the system running it needs to
+# have already trusted the server. To do this, just 'ssh <SFTP_HOST>'
+# and allow the system to add it.
+
+arguments:
+  --destination: data/claw.output 
+  --help: False
+  --key_path: null
+  --key_pw: null
+  --password: <SFTP_PASSWORD>
+  --username: <SFTP_USERNAME>
+  --verbose: False
+  --version: False
+  <ftp_host>: <SFTP_HOST>
+  <ftp_port>: 22
+  <remote_file_path>: [<PATH_TO_MY_CSV_ON_SFTP_SERVER>] 
+
+#+END_SRC
+*** Auditor
+Auditor requires a few changes to get running from the example config. Each
+sub_heading in this section will show the changes that need to be made. As in the
+claw explanation, variables will be uppercase in <>.
+
+**** header_meaning
+This is what tracks the names of the columns of the csv.
+#+BEGIN_SRC yaml
+header_meaning:
+  subject: &subject <COLUMN_FOR_SUBJECT>
+  lab_type: &lab_type <COLUMN_FOR_LAB_TYPE>
+  value: &value <COLUMN_FOR_LAB_VALUE>
+  unit: &unit <COLUMN_FOR_LAB_UNIT>
+  test_date: &test_date <COLUMN_FOR_LAB_TEST_DATE>
+#+END_SRC
+**** new_headers
+This is typically used for trimming out labs outside of the consent date range. This
+is a minimal run so we will comment this out for now
+#+BEGIN_SRC yaml
+# new_headers:
+#   consent_date: 
+#     name: &consent_date consent_date
+#     key: *subject
+#     value: *consent_date
+#     default: null
+#     lookup_file: &consent_dates_path configs/consent_dates.yaml
+#+END_SRC
+**** headers
+This one is easy. Make it look like this. Get rid of the consent date line
+#+BEGIN_SRC yaml
+headers: &headers
+  - *subject
+  - *lab_type
+  - *value
+  - *unit
+  - *test_date
+#+END_SRC
+**** csv_conf
+This section is needed to tell auditor how to read the csv. Change the quoted delimiter and quotechar
+to the right one for your csv. Make sure to enclose the character in quotes and escape if needed
+#+BEGIN_SRC yaml
+# csv format stuff
+csv_conf:
+  delimiter: ","
+  quotechar: "\""
+#+END_SRC
+**** csv_encoding
+This section tells python how to read the file. The EMR file recieved could be something other
+than utf-8 and in that case you will need to add the right Python file encoding flag.
+
+You can find the encoding of a file by using the bash `file` command. The following is used
+at a few sites though most of the time this field should be left as utf-8
+#+BEGIN_SRC yaml
+csv_encoding: latin1
+#+END_SRC
+**** whitelist, blacklist, regex
+Delete the following sections from the file. It will be used in more advanced configurations.
+
+#+BEGIN_SRC yaml
+# list of values that are whitelisted for each header
+whitelist: &whitelist_vals
+  - header_name: *lab_type
+    vals_file_path: configs/example_labs.yaml
+  - header_name: *subject
+    vals_file_path: configs/example_good_subj.yaml
+
+# list of values that are blacklisted
+blacklist: &blacklist_vals
+  - header_name: *subject
+    vals_file_path: configs/example_bad_subj.yaml
+  - header_name: *value
+    vals_file_path: configs/empty.yaml
+
+# capture something and pass it along
+regexs: &regexs
+  - header_name: *value
+    vals_file_path: configs/example_regex_capture.yaml
+#+END_SRC
+**** mappings
+Finally, make the mappings section at the bottom look like the following:
+(Be sure to delete the consent date portion.)
+#+BEGIN_SRC yaml
+mappings: &mappings
+  - header: *test_date
+    maps: [*format_date]
+  - header: *lab_type
+    maps: []
+  - header: *value
+    maps: []
+  - header: *subject
+    maps: []
+  - header: *unit
+    maps: [*empty_okay]
+#+END_SRC
+*** Optimus
+Depending on the project that you are deploying, (HCV or PRIORITIZE) you should delete the other
+example config for Optimus, then rename the correct one to 'optimus.conf.yaml'
+
+The next thing to change is the redcap_url and token that are used to validate the configuration.
+#+BEGIN_SRC yaml
+redcap_url: http://hcvtargetrc.dev/redcap/api/
+token: BF737141CE84F98B749A204F5A0CEE41
+#+END_SRC
+
+
+For the rest of the config it's important to keep in mind how optimus works. First it reads through
+all the rows of the csv, grabbing little quanta of data from it, sometimes multiple per row, and then
+it will use the form configs and the code in the project specific module to transform the data into
+something that redcap wants to consume. The top level keys in the optimus config `key_header` and
+`rows` say which column to look at to distinguish rows (in our case which lab this is) and how to get
+the quanta of data out of the rows respectively
+
+#+BEGIN_SRC yaml
+key_header: *test_name
+rows: []
+# rows can also use the `-` list syntax
+#+END_SRC
+
+So while the form configs are done and should not change, the portion that pulls data out of the csv
+may need to be adjusted. For example, look at the following section that is in the optimus.hcv.conf.yaml
+file:
+
+#+BEGIN_SRC yaml
+  - row_key: WBC URINE
+    outputs:
+      - datum: *value_header
+        field: *wbc_val
+        date: *event_header
+        subj: *subject
+      - datum: *unit_header
+        field: *wbc_unit
+        date: *event_header
+        subj: *subject
+#+END_SRC
+
+Lets go through line by line and say what each thing means. The `row_key` specifies the string that will
+be found in the `key_header` column which identifies the data we extract.
+
+The `outputs` key is a list of dictionaries that have four parts: datum, field, date, and subj (subject) keys. 
+The purpose of the datum piece is to say where the datum we will brin to redcap is located. The field is 
+the field_name of the redcap field into which we are pushing the data. The date is the name of the column that
+specifies when the data was generated (important for longitudinal projects). And finally the subj field indicates
+which column contains the subject identifier field.
+
+When building out a new site the main thing that may need to change here is the `row_key` field for each piece of
+data. So in the preceding example if 'wbc_im_lborres' needs to come from a row in a csv that has a lab named something
+other than 'WBC URINE' then change that string to the right one.
+
+*** Lineman
+Lineman requires very few changes to get working. Just make the following section in the
+config have the proper API URL and token. The following is what will be in those
+two places by default:
+
+#+BEGIN_SRC yaml
+
+token: BF737141CE84F98B749A204F5A0CEE41
+redcap_url: http://hcvtargetrc.dev/redcap/api/
+
+#+END_SRC
+
+*** Pigeon
+Pigeon requires very few changes to get working. Just make the following section in the
+config have the proper API URL and token. The following is what will be in those
+two places by default: 
+
+#+BEGIN_SRC yaml
+
+token: BF737141CE84F98B749A204F5A0CEE41
+redcap_url: http://hcvtargetrc.dev/redcap/api/
+
+#+END_SRC
+** Alter the run.sh file
+The run.sh file in the site root should not need to be changed at all for Install 1. Make sure that if you
+want to do a 'dry' run to comment out the pigeon portion which will change data in the REDCap project.
+
+If you did install 2 on a disconnected system, the following needs to be added to the run.sh:
+#+BEGIN_SRC bash
+source ../correct_path.env
+#+END_SRC
+
+This can be added anywhere before any of the python tools are called, but to be safe, just add
+it right after the virtual environment is sourced
+** Add the cron job
+Finally add the job to the cron tab using `crontab -e`
+
+To be safe, make sure that there are 60 minutes between runs. This is in case the Pigeon run needs
+to fail over to the Singles Upload Strategy.
+
+The script that should be run is as follows: 
+
+#+BEGIN_SRC bash
+echo "cd /data/redi/redi2/redi2/<MY_SITE>; bash run.sh" | bash
+#+END_SRC
+
