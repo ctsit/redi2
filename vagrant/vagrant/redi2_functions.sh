@@ -15,7 +15,8 @@ function install_redi2() {
         popd
     chown -R ${REDI2_USER}:${REDI2_USER} ./redi2
     chown -R ${REDI2_USER}:${REDI2_USER} ./redi2.tar.gz
-    mkdir $TAR_DIR
+    
+    mkdir -p $TAR_DIR
     cp redi2.tar.gz $TAR_DIR
     popd
 }
