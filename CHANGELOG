@@ -1,3 +1,14 @@
+## [1.3.0] - 2017-08-14
+### Fixed
+ * Fixed the way the tar file is generated (Matthew McConnell)
+ * bugfix install 2 and remove paramiko bcrypt dependency (Patrick White)
+
+### Added
+ * Update README.md (PFWhite)
+ * add information for optimus data quanta (Patrick White)
+ * Update new_feeds.org (Buck at UF)
+ * Update new_feeds.org (Buck at UF)
+
 ## [1.0.1] - 2017-07-12
 ### Bugfixs
  * Update README.md (Christopher P. Barnes)
