@@ -20,7 +20,6 @@ find packages/ -name "*.egg-info" | xargs rm -rf
 find packages/ -name "*.pyc" | xargs rm -rf
 
 echo "Removing the virtualenv"
-deactivate
 rm -rf venv
 
 echo "Creating a tar archive for transfer"
