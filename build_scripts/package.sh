@@ -6,11 +6,8 @@ echo "Getting source files"
 pushd redi2
 pushd repos
 bash ../../build_scripts/get_source.sh
-popd
 
 echo "Installing your packages in in redi2/packages"
-mkdir packages
-pushd repos
 bash ../../build_scripts/install_packages_for_shipping.sh
 popd
 
