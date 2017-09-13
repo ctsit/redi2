@@ -35,6 +35,19 @@ function install_utils() {
     cp /vagrant/dot_files/vimrc         /root/.vimrc
 }
 
+function install_python_tools() {
+    #this is used for RED-I2 things
+    #Due to some bug with Python 3.4 and Debian, need to get pip manually
+    curl https://bootstrap.pypa.io/get-pip.py > get-pip.py
+    apt-get install python3.4-dev -y
+    python3.4 get-pip.py
+
+    # Also install pycurl with its dependencies
+    #this is used for redcap things
+    apt-get install -y python-pip libcurl4-gnutls-dev librtmp-dev
+    pip2 install pycurl
+}
+
 function install_prereqs() {
     log "Executing ${FUNCNAME[0]}"
     REQUIRED_PARAMETER_COUNT=2
@@ -69,7 +82,6 @@ END
     echo mysql-community-server mysql-community-server/root-pass           password $DATABASE_ROOT_PASS | debconf-set-selections
     echo mysql-community-server mysql-community-server/re-root-pass        password $DATABASE_ROOT_PASS | debconf-set-selections
 
-    apt-get install -y python3
     apt-get install -y apache2
     apt-get install -y mysql-community-server
     apt-get install -y php5 php5-mysql php5-mcrypt php5-gd
@@ -118,15 +130,6 @@ END
     sleep 2
     service apache2 start
 
-    # Install python-pip, then install virtualenv for various python tools,
-    # such as the create_project.py script
-    # Also install pycurl with its dependencies
-    apt-get install -y python-pip
-    apt-get install -y python-dev
-    apt-get install -y libcurl4-gnutls-dev librtmp-dev
-
-    pip install virtualenv
-    pip install pycurl
 }
 
 function create_database() {

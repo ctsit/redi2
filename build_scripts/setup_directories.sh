@@ -1,6 +1,3 @@
-mkdir redi2
-pushd redi2
-virtualenv -p python3 venv
-source venv/bin/activate
-mkdir repos
-popd
+mkdir -p redi2/repos
+mkdir -p redi2/packages
+python3 -m venv redi2/venv

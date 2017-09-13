@@ -6,18 +6,10 @@ echo "Getting source files"
 pushd redi2
 pushd repos
 bash ../../build_scripts/get_source.sh
-popd
 
 echo "Installing your packages in in redi2/packages"
-mkdir packages
-pushd repos
-bash ../../build_scripts/install_packages_for_shipping.sh
+bash ../../build_scripts/download_packages_for_shipping.sh
 popd
-
-echo "Removing compiled things from the packages"
-find packages/ -name "__pycache__" | xargs rm -rf
-find packages/ -name "*.egg-info" | xargs rm -rf
-find packages/ -name "*.pyc" | xargs rm -rf
 
 echo "Removing the virtualenv"
 rm -rf venv
