@@ -10,3 +10,4 @@ pip3 install -f ../packages --no-index -e ./auditor
 pip3 install -f ../packages --no-index -e ./optimus
 pip3 install -f ../packages --no-index -e ./lineman
 pip3 install -f ../packages --no-index -e ./pigeon
+pip3 install -f ../packages --no-index -e ./hawk_eye_notify
