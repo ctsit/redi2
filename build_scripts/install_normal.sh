@@ -1,6 +1,6 @@
 echo "Deploying RED-I 2!"
 cd ..
-bash build_scripts/setup_directories.sh
+bash ../../build_scripts/setup_directories.sh
 
 echo "Getting source files"
 pushd redi2
