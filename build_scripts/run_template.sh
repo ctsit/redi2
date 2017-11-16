@@ -1,5 +1,6 @@
 echo "starting red-i 2 run for NEW_SITE"
 STARTTIME=$( date )
+DATESTR=`date +%Y-%m-%d`
 date
 
 echo "stepping into virtualenv"
@@ -24,6 +25,11 @@ echo "pigeon is carrying the data to redcap"
 pigeon data/lineman.output configs/pigeon.conf.yaml > data/pigeon.output
 
 echo "run completed"
+
+echo "Moving logs to archive"
+for f in log/*.log; do
+    mv log/"$f" log/archive/"$DATESTR"_"$f"
+done
 
 echo "start time"
 echo $STARTTIME

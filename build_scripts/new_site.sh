@@ -9,13 +9,14 @@ mkdir NEW_SITE
 pushd NEW_SITE
 mkdir configs
 mkdir data
-mkdir log
+mkdir -p log/archive
 cp ../repos/claw/claw/config.yaml.example configs/claw.conf.yaml
 cp ../repos/auditor/auditor/auditor.example.conf.yaml configs/auditor.conf.yaml
 cp ../repos/auditor/auditor/configs/* configs/
 cp ../repos/optimus/optimus/configs/* configs/
 cp ../repos/lineman/lineman/lineman.example.conf.yaml configs/lineman.conf.yaml
 cp ../repos/pigeon/pigeon/pigeon.example.conf.yaml configs/pigeon.conf.yaml
+cp ../repos/hawk_eye_notify/hawk_eye_notify/hawk_eye_notify.conf.yaml.example configs/hawk_eye_notify.conf.yaml
 
 echo "Building a simple run script"
 cat ../../build_scripts/run_template.sh > run.sh
