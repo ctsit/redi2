@@ -1,3 +1,27 @@
+## [1.4.0] - 2017-11-16
+### Summary
+This release allows deployment to a completely isolated environment by packing all the dependencies
+with the release. It also adds a new tool called Hawk_Eye_Notify for log watching.
+
+### Fixed
+ * allow pip install to use dependencies correctly (Matthew McConnell)
+ * update .env pointing to CTSIT fork. (Matthew McConnell)
+ * change the way the venv is created to the python approved way (Matthew McConnell)
+ * upgrade pip on host machine using new pip wheel (Matthew McConnell)
+ * force downloading to check locally first (Matthew McConnell)
+ * clean up creation of directories (Matthew McConnell)
+
+### Added
+ * Add hawk-eye to the build scripts (Matthew McConnell)
+ * remove frozen deps since its no longer needed (Matthew McConnell)
+ * upgrade pip on host machine using new pip wheel (Matthew McConnell)
+ * download the latest pip package for shipping (Matthew McConnell)
+ * have the scripts download all the required packages to the packages dir (Matthew McConnell)
+ * attempt to download all the dependencies of packages (Matthew McConnell)
+
+### Removed
+ * remove frozen deps since its no longer needed (Matthew McConnell)
+
 ## [1.3.1] - 2017-08-15
 ### Fixed
  - Updated the source and version for all the projects that make up REDI2
