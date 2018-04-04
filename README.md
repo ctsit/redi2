@@ -1,8 +1,7 @@
 # REDI2 v1.0.1
 REDCap Electronic Data - I (Ingester/Integrator/Importer) 2
 
-REDI2 is a suite of tools used to take data from a csv and import it into a redcap project using the API.
-It is the spiritual successor to REDI.
+REDI2 is a suite of tools designed to transform the CSV data and load it into the fields and events of a REDCap project. REDI2 excels at transforming large, longitudinal data sets and loading them into REDCap in a scripted, repeatable fashion. REDI2 is fast and has minimal effects on REDCap server load.
 
 ## Meet the parts of redi2 ##
 ![data_flow](https://docs.google.com/drawings/d/1bVDUGXkr1n2RrGORnIeeY2nuyVz8BhUtTBgcgNcQeKw/pub?w=843&h=713)
