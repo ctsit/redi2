@@ -1,3 +1,10 @@
+# CHANGELOG
+
+## [1.4.1] - 2018-10-16
+### Summary
+Documentation fixes and security updates.
+
+
 ## [1.4.0] - 2017-11-16
 ### Summary
 This release allows deployment to a completely isolated environment by packing all the dependencies
