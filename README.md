@@ -1,4 +1,4 @@
-# REDI2 v1.0.1
+# REDI2 v1.4.1
 REDCap Electronic Data - I (Ingester/Integrator/Importer) 2
 
 REDI2 is a suite of tools designed to transform the CSV data and load it into the fields and events of a REDCap project. REDI2 excels at transforming large, longitudinal data sets and loading them into REDCap in a scripted, repeatable fashion. REDI2 is fast and has minimal effects on REDCap server load.
@@ -6,7 +6,7 @@ REDI2 is a suite of tools designed to transform the CSV data and load it into th
 ## Meet the parts of redi2 ##
 ![data_flow](https://docs.google.com/drawings/d/1bVDUGXkr1n2RrGORnIeeY2nuyVz8BhUtTBgcgNcQeKw/pub?w=843&h=713)
 
-redi2 is really just a collection of tools and a few scripts which help you get set up. 
+redi2 is really just a collection of tools and a few scripts which help you get set up.
 
 ### Claw ###
 
@@ -19,13 +19,13 @@ Auditor redacts, maps, cleans and basically does whatever to the output of claw 
 ### Optimus ###
 
 Optimus takes your particular CSV and your project specific rules and transforms the data into a form which should
-be easy to make right with redcap. Here is when branching logic should be applied and any derived data which 
+be easy to make right with redcap. Here is when branching logic should be applied and any derived data which
 can be inferred, but is not explicitly present in your raw CSV should be made.
 
 
 ### Lineman ###
- 
-Lineman is the first tool to talk to redcap. It grabs information related to the data you are passing in and 
+
+Lineman is the first tool to talk to redcap. It grabs information related to the data you are passing in and
 validates that it can be imported. It will change the fields that it must in order to make sure that it will go in.
 For example, it can take dates and map them to the correct event in the redcap.
 
@@ -45,7 +45,7 @@ RED-I2 can be tested on a vagrant. In order to do so the following steps need to
 - get a copy of redcap version 6.16.8 zip file and place in the redi2/vagrant/vagrant directory with the name redcap6.16.8.zip
 - rename the file `rename_to_dot_env` to `.env` in the same directory `$ cp rename_to_dot_env .env`
 - run vagrant up. (Make sure to install the plugins in the plugins.txt file)
-- open your browser to http://redi2.dev/redcap/ 
+- open your browser to http://redi2.dev/redcap/
 -- go to Projects > HCV Target > API, take note of your token
 - run vagrant ssh from the vagrant/vagrant directory and go to ~/redi2/synthetic_data
 - edit the synth.pigeon.conf.yaml and insert the token from before
@@ -79,7 +79,7 @@ What follows are the requirements and steps to install redi2 with access to both
   * virtualenv
   * access to github
   * access to PyPi
-  
+
 #### Steps ####
 
 Clone this repo and enter it.
@@ -95,7 +95,7 @@ Set the `run.sh` script to run when you want it to.
 ### Install 2 ###
 
 This install is for those who have a target system that is not able to call out to github or PyPi for
-whatever reason. The general strategy is to do as much work in an environment like the one to which you 
+whatever reason. The general strategy is to do as much work in an environment like the one to which you
 will be deploying and bringing all that stuff over.
 
 #### Requirements ####
@@ -112,10 +112,10 @@ will be deploying and bringing all that stuff over.
   * ssh access
   * python3
   * virtualenv
-  
+
 #### Vagrant Steps ####
 
-By using vagrant up, one gets a copy of the redi2.tar.gz in `repo/vagrant/redi2_deploy_tar` that is used in the 
+By using vagrant up, one gets a copy of the redi2.tar.gz in `repo/vagrant/redi2_deploy_tar` that is used in the
 manual steps. It will be build on the debian jessie vagrant and bundled from there. If you want to skip the
 steps that take place on System 1 then this is what you should do.
 
@@ -144,7 +144,7 @@ Return to the directory where redi2 was cloned.
 
 Use `scp` to get the `redi2.tar.gz` directory to System 2. It will be in the directory above.
 
-Use `ssh` to gain access to System 2. 
+Use `ssh` to gain access to System 2.
 
 ##### System 2 #####
 
@@ -165,5 +165,5 @@ Set the `run.sh` script to run when you want it to.
 
 ## Putting it all together ##
 
-Once one has built their configs all that remains is to run the tools in the right order. Pretty easy! 
+Once one has built their configs all that remains is to run the tools in the right order. Pretty easy!
 Happy redcapping!
